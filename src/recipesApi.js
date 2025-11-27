@@ -21,5 +21,7 @@ export const addRecipe = async (recipe) => {
     } catch (error) {
         console.error('Erreur lors de l\'ajout de recette:', error);
         throw error;
+
+        
     }
 };
