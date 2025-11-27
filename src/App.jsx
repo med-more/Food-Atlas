@@ -1,14 +1,11 @@
-import { BrowserRouter,Routes,Route } from "react-router-dom"
-import ManageRecipes from "./pages/ManageRecipes/ManageRecipes"
 
 function App() {
+  const [count, setCount] = useState(0)
 
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path="/Admin" element={<ManageRecipes/>}></Route>
-    </Routes>
-    </BrowserRouter>
+    <>
+     
+    </>
   )
 }
 
