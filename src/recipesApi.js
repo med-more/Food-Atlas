@@ -12,3 +12,14 @@ export const updateRecipe = async (id, recipe) =>{
         throw error;
     }
 };
+
+// function pour AJOUTER une recette
+export const addRecipe = async (recipe) => {
+    try {
+        const response = await axios.post(API_URL, recipe);
+        return response.data;
+    } catch (error) {
+        console.error('Erreur lors de l\'ajout de recette:', error);
+        throw error;
+    }
+};
