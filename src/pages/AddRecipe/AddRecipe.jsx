@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from 'react' 
 import { useNavigate } from 'react-router-dom' 
 import { FaArrowLeft, FaPlus, FaTrash, FaImage } from 'react-icons/fa' 
@@ -524,5 +523,3 @@ const AddRecipe = () => {
 }
 
 export default AddRecipe
-=======
->>>>>>> e649e2d202822650510f364ca34a0ec5e8ac79b7
