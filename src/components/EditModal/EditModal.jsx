@@ -92,6 +92,15 @@ const EditModal = (recipe, isOpen) => {
     }))
   }
 
+  const handleIngredientChange = (index, value) =>{
+    const newIngredients = [...formData.ingredients]
+    newIngredients[index] = value
+    setFormData(prev =>({
+        ...prev,
+        ingredients: [...prev.ingredients, '']
+    }))
+  }
+
 
   return (
     <div>EditModal</div>
