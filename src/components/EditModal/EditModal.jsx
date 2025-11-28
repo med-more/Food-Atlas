@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import "./EditModal.css"
 
 
-const EditModal = () => {
+const EditModal = (recipe, isOpen) => {
     const [formData, setFormData] = useState({
         nom: '',
         pays: '',
@@ -27,7 +27,27 @@ const EditModal = () => {
     'Espagne', 'Grèce', 'Thaïlande', 'Chine', 'Liban', 'Turquie'
   ]
 
-  
+  useEffect(()=>{
+    if (recipe && isOpen) {
+        setFormData({
+            nom: recipe.nom || '',
+            pays: recipe.pays || '',
+            categorie: recipe.categorie || '',
+            image: recipe.image || '',
+            description: recipe.description || '',
+            tempsPreparation: recipe.tempsPreparation || '',
+            portions: recipe.portions || '',
+            difficulte: recipe.difficulte || '',
+            ingredients: recipe.ingredients && recipe.ingredients.length > 0 ? recipe.ingredients : [''],
+            etapes: recipe.etapes && recipe.etapes.length > 0 ? recipe.etapes : ['']
+        })
+
+        setImagePreview(recipe.image || null)
+        setImageFile(null)
+    }
+  }, [recipe, isOpen])
+
+
   return (
     <div>EditModal</div>
   )
