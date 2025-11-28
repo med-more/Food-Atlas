@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import "./EditModal.css"
 
 
-const EditModal = (recipe, isOpen) => {
+const EditModal = ({recipe, isOpen}) => {
     const [formData, setFormData] = useState({
         nom: '',
         pays: '',
@@ -96,6 +96,13 @@ const EditModal = (recipe, isOpen) => {
     const newIngredients = [...formData.ingredients]
     newIngredients[index] = value
     setFormData(prev =>({
+        ...prev,
+        ingredients: newIngredients
+    }))
+  }
+
+  const addIngredient = () => {
+    setFormData(prev => ({
         ...prev,
         ingredients: [...prev.ingredients, '']
     }))
