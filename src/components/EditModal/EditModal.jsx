@@ -58,6 +58,31 @@ const EditModal = (recipe, isOpen) => {
     }
   }
 
+  const handleImageFileChange = (e) =>{
+    const file = e.target.files[0]
+    if (file) {
+        if (!file.type.startsWith('image/')) {
+            toast.error('Veuillez sélectionner un fichier image')
+            return 
+        }
+        if (file.size > 5 * 1024* 1024) {
+            toast.error('L\'image est trop volumineuse. Taille maximale : 5MB')
+            return 
+        }
+        setImageFile(file)
+        const reader = new FileReader()
+        reader.onloadend = () =>{
+            const base64Image = reader.result
+            setImagePreview(base64Image)
+            setFormData(prev => ({
+                ...prev,
+                image: base64Image
+            }))
+        }
+        reader.readAsDataURL(file)
+    }
+  }
+
 
   return (
     <div>EditModal</div>
