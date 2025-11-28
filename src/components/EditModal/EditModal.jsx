@@ -83,6 +83,15 @@ const EditModal = (recipe, isOpen) => {
     }
   }
 
+  const removeImage = () =>{
+    setImagePreview(null)
+    setImageFile(null)
+    setFormData(prev =>({
+        ...prev,
+        image: ''
+    }))
+  }
+
 
   return (
     <div>EditModal</div>
