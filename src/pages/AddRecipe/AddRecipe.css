@@ -1,0 +1,346 @@
+<<<<<<< HEAD
+.add-recipe-page {
+    min-height: calc(100vh - 200px);
+    padding: 2rem 1rem;
+    background-color: var(--light-gray);
+}
+
+.add-recipe-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--white);
+    color: var(--primary-orange);
+    border: 2px solid var(--primary-orange);
+    border-radius: 25px;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: var(--primary-orange);
+    color: var(--white);
+    transform: translateX(-5px);
+}
+
+.back-icon {
+    font-size: 1rem;
+}
+
+.add-recipe-header {
+    background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+    padding: 3rem 2rem;
+    border-radius: 16px 16px 0 0;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.add-recipe-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.add-recipe-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+.add-recipe-form {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 0 0 16px 16px;
+    box-shadow: var(--shadow);
+}
+
+.form-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-orange);
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-select {
+    cursor: pointer;
+    background-color: var(--white);
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+.form-help {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+}
+
+.dynamic-input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-with-button {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+.input-with-button .form-input,
+.input-with-button .form-textarea {
+    flex: 1;
+}
+
+.remove-button {
+    padding: 0.9rem 1rem;
+    background: #e74c3c;
+    color: var(--white);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+}
+
+.remove-button:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+.add-item-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--light-orange);
+    color: var(--primary-orange);
+    border: 2px dashed var(--primary-orange);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.add-item-button:hover {
+    background: var(--primary-orange);
+    color: var(--white);
+    border-color: var(--primary-orange);
+}
+
+.add-icon {
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--light-gray);
+}
+
+.submit-button {
+    flex: 1;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.reset-button {
+    padding: 1rem 2rem;
+    background: var(--white);
+    color: var(--primary-orange);
+    border: 2px solid var(--primary-orange);
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.reset-button:hover {
+    background: var(--light-orange);
+}
+
+@media (max-width: 768px) {
+.add-recipe-page {
+    padding: 1rem;
+}
+
+.add-recipe-header {
+    padding: 2rem 1.5rem;
+}
+
+.add-recipe-title {
+    font-size: 2rem;
+}
+
+.add-recipe-form {
+    padding: 1.5rem;
+}
+
+.form-actions {
+    flex-direction: column;
+}
+
+.submit-button,
+.reset-button {
+    width: 100%;
+}
+}
+
+/* Image Upload Styles */
+.file-upload-container {
+    margin-bottom: 1rem;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border: 2px dashed var(--primary-orange);
+    border-radius: 8px;
+    background: var(--light-orange);
+    color: var(--primary-orange);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-upload-label:hover {
+    background: var(--primary-orange);
+    color: var(--white);
+    border-color: var(--primary-orange);
+}
+
+.upload-icon {
+    font-size: 1.5rem;
+}
+
+.image-preview-container {
+    margin-top: 1rem;
+}
+
+.image-preview-wrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 300px;
+    display: block;
+    object-fit: contain;
+}
+
+.remove-image-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(231, 76, 60, 0.9);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.remove-image-button:hover {
+    background: #e74c3c;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .image-preview {
+        max-height: 200px;
+    }
+}
+
+=======
+>>>>>>> e649e2d202822650510f364ca34a0ec5e8ac79b7
