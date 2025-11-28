@@ -47,6 +47,17 @@ const EditModal = (recipe, isOpen) => {
     }
   }, [recipe, isOpen])
 
+  const handleChange = (e) =>{
+    const {name, value} = e.target
+    setFormData(prev => ({
+        ...prev,
+        [name]: value
+    }))
+    if (name === 'image') {
+        setImagePreview(value)
+    }
+  }
+
 
   return (
     <div>EditModal</div>
