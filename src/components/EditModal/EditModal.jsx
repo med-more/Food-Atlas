@@ -169,8 +169,258 @@ const EditModal = ({recipe, isOpen, onUpdate, onClose}) => {
   }
 
 
+    if (!isOpen || !recipe) return null
+
+
   return (
-    <div>EditModal</div>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="edit-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2 className="modal-title">Modifier la recette</h2>
+          <button onClick={onClose} className="close-button">
+            <FaTimes />
+          </button>
+        </div>
+
+        <p className="modal-subtitle">
+          Modifiez les informations de la recette "{recipe.nom}"
+        </p>
+
+        <form className="edit-form" onSubmit={handleSubmit}>
+          <div className="form-section">
+            <h3 className="section-title">Informations de base</h3>
+            
+            <div className="form-group">
+              <label className="form-label">Nom de la recette *</label>
+              <input
+                type="text"
+                name="nom"
+                value={formData.nom}
+                onChange={handleChange}
+                className="form-input"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Pays *</label>
+              <select
+                name="pays"
+                value={formData.pays}
+                onChange={handleChange}
+                className="form-select"
+                required
+              >
+                <option value="">Sélectionnez un pays</option>
+                {countries.map(country => (
+                  <option key={country} value={country}>{country}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Catégorie *</label>
+              <input
+                type="text"
+                name="categorie"
+                value={formData.categorie}
+                onChange={handleChange}
+                className="form-input"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Image de la recette *</label>
+              
+              {/* Option pour uploader un fichier local */}
+              <div className="file-upload-container">
+                <input
+                  type="file"
+                  id="edit-image-file"
+                  accept="image/*"
+                  onChange={handleImageFileChange}
+                  className="file-input"
+                />
+                <label htmlFor="edit-image-file" className="file-upload-label">
+                  <FaImage className="upload-icon" />
+                  <span>{imageFile ? imageFile.name : 'Cliquez pour changer l\'image'}</span>
+                </label>
+                {imageFile && (
+                  <p className="form-help">
+                    Fichier sélectionné: {imageFile.name} ({(imageFile.size / 1024 / 1024).toFixed(2)} MB)
+                  </p>
+                )}
+              </div>
+
+              {/* Ou modifier l'URL */}
+              <p className="form-help" style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>Ou modifiez l'URL :</p>
+              <input
+                type="text"
+                name="image"
+                value={formData.image}
+                onChange={handleChange}
+                placeholder="URL de l'image"
+                className="form-input"
+                required
+              />
+
+              {/* Aperçu de l'image */}
+              {imagePreview && (
+                <div className="image-preview-container" style={{ marginTop: '1rem' }}>
+                  <div className="image-preview-wrapper">
+                    <img src={imagePreview} alt="Aperçu" className="image-preview" />
+                    <button
+                      type="button"
+                      onClick={removeImage}
+                      className="remove-image-button"
+                      title="Supprimer l'image"
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Description *</label>
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                rows="4"
+                className="form-textarea"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Temps de préparation</label>
+              <input
+                type="text"
+                name="tempsPreparation"
+                value={formData.tempsPreparation}
+                onChange={handleChange}
+                placeholder="Ex: 30 minutes"
+                className="form-input"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Portions</label>
+              <input
+                type="text"
+                name="portions"
+                value={formData.portions}
+                onChange={handleChange}
+                placeholder="Ex: 4-6 personnes"
+                className="form-input"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Difficulté</label>
+              <input
+                type="text"
+                name="difficulte"
+                value={formData.difficulte}
+                onChange={handleChange}
+                placeholder="Ex: Facile, Moyen, Difficile"
+                className="form-input"
+              />
+            </div>
+          </div>
+
+          {/* Section Ingrédients */}
+          <div className="form-section">
+            <h3 className="section-title">Ingrédients</h3>
+            
+            {formData.ingredients.map((ingredient, index) => (
+              <div key={index} className="dynamic-input-group">
+                <label className="form-label">Ingrédient {index + 1}</label>
+                <div className="input-with-button">
+                  <input
+                    type="text"
+                    value={ingredient}
+                    onChange={(e) => handleIngredientChange(index, e.target.value)}
+                    placeholder={`Ex: 500g de viande`}
+                    className="form-input"
+                  />
+                  {formData.ingredients.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeIngredient(index)}
+                      className="remove-button"
+                      title="Supprimer cet ingrédient"
+                    >
+                      <FaTrash />
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
+            
+            <button
+              type="button"
+              onClick={addIngredient}
+              className="add-item-button"
+            >
+              <FaPlus className="add-icon" />
+              <span>Ajouter un ingrédient</span>
+            </button>
+          </div>
+
+          {/* Section Étapes */}
+          <div className="form-section">
+            <h3 className="section-title">Étapes de préparation</h3>
+            
+            {formData.etapes.map((etape, index) => (
+              <div key={index} className="dynamic-input-group">
+                <label className="form-label">Étape {index + 1}</label>
+                <div className="input-with-button">
+                  <textarea
+                    value={etape}
+                    onChange={(e) => handleStepChange(index, e.target.value)}
+                    placeholder={`Décrivez l'étape ${index + 1}...`}
+                    rows="3"
+                    className="form-textarea"
+                  />
+                  {formData.etapes.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeStep(index)}
+                      className="remove-button"
+                      title="Supprimer cette étape"
+                    >
+                      <FaTrash />
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
+            
+            <button
+              type="button"
+              onClick={addStep}
+              className="add-item-button"
+            >
+              <FaPlus className="add-icon" />
+              <span>Ajouter une étape</span>
+            </button>
+          </div>
+
+          <div className="form-actions">
+            <button type="button" onClick={onClose} className="cancel-button">
+              Annuler
+            </button>
+            <button type="submit" className="save-button" disabled={isSubmitting}>
+              {isSubmitting ? 'Enregistrement...' : 'Enregistrer les modifications'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   )
 }
 
