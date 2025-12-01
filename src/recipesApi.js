@@ -12,6 +12,7 @@ export const getRecipeById = async (id) => {
     console.error('Erreur lors de la récupération de la recette:', error);
     throw error;
   }
+};
 //Fonction pour MODIFIER une recette existante
 export const updateRecipe = async (id, recipe) =>{
     try {
