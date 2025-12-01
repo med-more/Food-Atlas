@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import "./EditModal.css"
 
 
-const EditModal = ({recipe, isOpen}) => {
+const EditModal = ({recipe, isOpen, onUpdate, onClose}) => {
     const [formData, setFormData] = useState({
         nom: '',
         pays: '',
@@ -141,6 +141,30 @@ const EditModal = ({recipe, isOpen}) => {
         ...prev,
         etapes: newEtapes
       }))
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    setIsSubmitting(true)
+
+    try {
+      const recipeToUpdate = {
+        ...formData,
+        ingredients: formData.ingredients.filter(i => i.trim()),
+        etapes: formData.etapes.filter(e => e.trim())
+      }
+
+      await updateRecipe(recipe.id, recipeToUpdate)
+      toast.success('Recette modifiée avec succès !')
+      onUpdate()
+      onClose()
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour:', error)
+      toast.error('Erreur lors de la mise à jour. Vérifiez que JSON Server est lancé.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
