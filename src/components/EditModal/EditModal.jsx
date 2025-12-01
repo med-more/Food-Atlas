@@ -108,6 +108,16 @@ const EditModal = ({recipe, isOpen}) => {
     }))
   }
 
+  const removeIngredient = (index) => {
+    if (formData.ingredients.length > 0) {
+        const newIngredients = formData.ingredients.filter((_, i) => i !== index)
+        setFormData(prev => ({
+            ...prev,
+            ingredients: newIngredients
+        }))
+    }
+  }
+
 
   return (
     <div>EditModal</div>
