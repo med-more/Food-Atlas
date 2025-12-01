@@ -13,16 +13,6 @@ export const getAllRecipes = async () => {
   }
 };
 
-// Fonction pour obtenir une recette par ID
-export const getRecipeById = async (id) => {
-  try {
-    const response = await axios.get(`${API_URL}/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error('Erreur lors de la récupération de la recette:', error);
-    throw error;
-  }
-};
 
 // Fonction pour MODIFIER une recette existante
 export const updateRecipe = async (id, recipe) => {
@@ -42,17 +32,6 @@ export const addRecipe = async (recipe) => {
     return response.data;
   } catch (error) {
     console.error('Erreur lors de l\'ajout de recette:', error);
-    throw error;
-  }
-};
-
-// Fonction pour SUPPRIMER une recette
-export const deleteRecipe = async (id) => {
-  try {
-    const response = await axios.delete(`${API_URL}/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error('Erreur lors de la suppression de recette:', error);
     throw error;
   }
 };
