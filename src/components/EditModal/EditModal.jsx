@@ -118,6 +118,32 @@ const EditModal = ({recipe, isOpen}) => {
     }
   }
 
+  const handleStepChange = (index, value) => {
+    const newEtapes = [...formData.etapes]
+    newEtapes[index] = value
+    setFormData(prev => ({
+        ...prev,
+        etapes: newEtapes
+    }))
+  }
+
+  const addStep = () => {
+    setFormData(prev => ({
+      ...prev,
+      etapes: [...prev.etapes, '']
+    }))
+  }
+
+  const removeStep = (index) => {
+    if (formData.etapes.length > 1) {
+      const newEtapes = formData.etapes.filter((_, i) => i !== index)
+      setFormData(prev => ({
+        ...prev,
+        etapes: newEtapes
+      }))
+    }
+  }
+
 
   return (
     <div>EditModal</div>
