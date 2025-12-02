@@ -31,7 +31,7 @@ const AddRecipe = () => {
     // list des pays
     const countries = [
       'Maroc', 'Italie', 'Turquie', 'Mexique', 'Indie', 'France', 'Chine',
-      'Espagne', 'Thailane', 'Liban', 'Japon'
+      'Espagne', 'Thailand', 'Liban', 'Japon'
     ]
 
     //function appellé quand utilisateur tape sur un champ
@@ -102,7 +102,6 @@ const AddRecipe = () => {
     // supprimer un ingredient 
     const removeIngredient = (index) => {
       if(formData.ingredients.length > 1) {
-        // créer un nouveau ingrédiant champs 
         const newIngredients = formData.ingredients.filter((_, i) => i !== index)
         setFormData({
           ...formData,
@@ -246,7 +245,7 @@ const AddRecipe = () => {
         difficulte: formData.difficulte || 'Moyen'
       }
 
-      // 3) Envoyer la recette à la base de données (attendre que ça se termine)
+      //Envoyer la recette à la base de données (attendre que ça se termine)
       await addRecipe(recipeToAdd)
       
       // Afficher un message de succès
@@ -255,11 +254,9 @@ const AddRecipe = () => {
       // Aller à la page de gestion des recettes
       navigate('/admin/gestion')
     } catch (error) {
-      // Si une erreur se produit, l'afficher
       console.error('Erreur lors de l\'ajout de la recette:', error)
       toast.error('Erreur lors de l\'ajout de la recette. Vérifiez que JSON Server est lancé.')
     } finally {
-      // Toujours remettre isSubmitting à false, même en cas d'erreur
       setIsSubmitting(false)
     }
   }
