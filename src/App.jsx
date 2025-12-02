@@ -1,18 +1,21 @@
 import AddRecipe from "./pages/AddRecipe/AddRecipe"
-import { Routes, Route } from 'react-router-dom' 
+import Contact from "./pages/Contact/Contact"
+import { Routes, Route, BrowserRouter } from 'react-router-dom' 
+
 
 function App() {
 
   return (
-    <div className="app">
+    <BrowserRouter>
       
       <main className="main-content">
         <Routes>  
           {/* Route pour ajouter une recette */}
           <Route path="/admin/ajouter" element={<AddRecipe />} />
+          <Route path="/contact" element= {<Contact/>}/>
         </Routes>
       </main>
-    </div>
+    </BrowserRouter>
   )
 }
 
