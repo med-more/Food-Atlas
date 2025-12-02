@@ -36,3 +36,7 @@ export const getRecipeById = async (id) => {
     throw error;
   }
 };
+
+
+// Fonction pour SUPPRIMER une recette de la base de données
+export const deleteRecipe = (id) => axios.delete(`${API_URL}/${id}`);
