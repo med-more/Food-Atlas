@@ -38,6 +38,10 @@ export const getRecipeById = async (id) => {
 };
 
 
+// Fonction pour SUPPRIMER une recette de la base de données
+export const deleteRecipe = (id) => axios.delete(`${API_URL}/${id}`);
+
+
 export const updateRecipe = async (id, recipe) => {
   try {
     const response = await axios.put(`${API_URL}/${id}`, recipe);
@@ -47,3 +51,5 @@ export const updateRecipe = async (id, recipe) => {
     throw error;
   }
 };
+
+
