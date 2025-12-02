@@ -4,16 +4,17 @@ import toast from 'react-hot-toast'
 import './DeleteModal.css'
 
 const DeleteModal = ({ recipe, isOpen, onClose, onDelete }) => {
-  const handleDelete = async () => {
-    try {
-      await deleteRecipe(recipe.id)
-      toast.success('Recette supprimée avec succès !')
-      onDelete()
-      onClose()
-    } catch (error) {
-      console.error('Erreur lors de la suppression:', error)
-      toast.error('Erreur lors de la suppression. Vérifiez que JSON Server est lancé.')
-    }
+  const handleDelete = () => {
+    deleteRecipe(recipe.id)
+      .then(() => {
+        toast.success('Recette supprimée avec succès !')
+        onDelete()
+        onClose()
+      })
+      .catch((error) => {
+        console.error('Erreur lors de la suppression:', error)
+        toast.error('Erreur lors de la suppression. Vérifiez que JSON Server est lancé.')
+      })
   }
 
   if (!isOpen || !recipe) return null
