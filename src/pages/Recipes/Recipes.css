@@ -1,0 +1,125 @@
+.recipes-page {
+  min-height: calc(100vh - 200px);
+  padding: 2rem 1rem;
+  background-color: var(--white);
+}
+
+.recipes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.recipes-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.recipes-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recipes-filters {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--light-gray);
+  border-radius: 12px;
+}
+
+.filter-label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filter-button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  background-color: var(--white);
+  color: var(--text-dark);
+  font-weight: 500;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: var(--light-orange);
+  border-color: var(--primary-orange);
+}
+
+.filter-button.active {
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+  color: var(--white);
+  border-color: var(--primary-orange);
+}
+
+.recipes-count {
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.recipes-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+
+.no-recipes {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .recipes-title {
+    font-size: 2rem;
+  }
+
+  .recipes-subtitle {
+    font-size: 1rem;
+  }
+
+  .recipes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .filter-buttons {
+    gap: 0.5rem;
+  }
+
+  .filter-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+
