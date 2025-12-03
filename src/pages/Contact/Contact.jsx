@@ -165,6 +165,22 @@ const Contact = () => {
                 <p>7j/7</p>
             </div>
         </div>
+
+        <section className="map-section">
+            <h2 className="section-title">Notre Localisation</h2>
+            <div className="map-container">
+                <iframe
+                    width="100%"
+                    height="400"
+                    style={{ border: 0, borderRadius: '12px' }}
+                    loading="lazy"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.1753237166565!2d2.3522!3d48.8566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2s123%20Rue%20de%20la%20Gastronomie%2C%2075001%20Paris!5e0!3m2!1sfr!2sfr!4v1234567890"
+                    allowFullScreen=""
+                    aria-hidden="false"
+                    tabIndex="0"
+                ></iframe>
+            </div>
+        </section>
     </div>
 </div>
 )
