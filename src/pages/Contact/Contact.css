@@ -63,12 +63,14 @@
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 1rem;;
 }
 
 .label-icon {
   color: var(--primary-orange);
-  font-size: 1rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding-right: 0.5rem;
 }
 
 .form-input,
@@ -143,6 +145,8 @@
 }
 
 .info-card {
+  display: flex;
+  flex-direction: column;
   background: var(--peach);
   padding: 2rem;
   border-radius: 12px;
@@ -170,7 +174,7 @@
 }
 
 .info-card p {
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   color: var(--text-light);
 }
 
