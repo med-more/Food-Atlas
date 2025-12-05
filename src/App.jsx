@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import './App.css'
 
-import Navbar from './components/Navbar/Navbar'
+
 import Footer from './components/Footer/Footer'
 
 import Home from './pages/Home/Home'
@@ -14,8 +14,8 @@ import ManageRecipes from './pages/ManageRecipes/ManageRecipes'
 
 function App() {
   return (
-    <div className="app">
-      <Navbar />
+    <BrowserRouter>
+      
       
       <main className="main-content">
         <Routes>
@@ -30,7 +30,7 @@ function App() {
 
       <Footer />
       <Toaster position="top-right" />
-    </div>
+    </BrowserRouter>
   )
 }
 
