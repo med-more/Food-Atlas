@@ -2,7 +2,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import './App.css'
 
-
+import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 
 import Home from './pages/Home/Home'
@@ -15,7 +15,7 @@ import ManageRecipes from './pages/ManageRecipes/ManageRecipes'
 function App() {
   return (
     <BrowserRouter>
-      
+      <Navbar />
       
       <main className="main-content">
         <Routes>
