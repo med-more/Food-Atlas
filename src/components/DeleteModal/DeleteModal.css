@@ -1,0 +1,164 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.delete-modal {
+  background: var(--white);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.warning-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.warning-icon {
+  font-size: 1.8rem;
+  color: #e74c3c;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e74c3c;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: var(--light-gray);
+  color: var(--text-dark);
+}
+
+.modal-content {
+  padding: 2rem;
+}
+
+.delete-question {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.recipe-name {
+  color: var(--primary-orange);
+  font-weight: bold;
+}
+
+.delete-warning {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-top: 2px solid var(--light-gray);
+  justify-content: flex-end;
+}
+
+.cancel-button,
+.delete-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.cancel-button {
+  background: var(--white);
+  color: var(--text-dark);
+  border: 2px solid var(--light-gray);
+}
+
+.cancel-button:hover {
+  background: var(--light-gray);
+}
+
+.delete-button {
+  background: #e74c3c;
+  color: var(--white);
+  border: none;
+}
+
+.delete-button:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+@media (max-width: 768px) {
+  .delete-modal {
+    max-width: 100%;
+  }
+
+  .modal-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .cancel-button,
+  .delete-button {
+    width: 100%;
+  }
+}
