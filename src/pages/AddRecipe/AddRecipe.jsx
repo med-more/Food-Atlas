@@ -52,21 +52,42 @@ const AddRecipe = () => {
       if(file){
         if(!file.type.startsWith('image/')) {
           toast.error('Veuillez selectioner un fichier de type image')
+          event.target.value = '' 
+          return
         }
 
         if(file.size > 5 * 1024 * 1024) {
           toast.error('Taille maximale : 5MB')
+          event.target.value = '' // Réinitialiser l'input
           return
         }
-        setImageFile()
+        
+        setImageFile(file)
 
         const reader = new FileReader()
 
         reader.onloadend = () => {
           const base64Image = reader.result
-          setImagePreview(base64Image)
+          if (base64Image && base64Image.trim() !== '') {
+            setImagePreview(base64Image)
+          } else {
+            toast.error('Erreur lors de la lecture de l\'image')
+            setImageFile(null)
+            setImagePreview(null)
           }
-          reader.readAsDataURL(file) 
+        }
+        
+        reader.onerror = () => {
+          toast.error('Erreur lors de la lecture de l\'image')
+          setImageFile(null)
+          setImagePreview(null)
+        }
+        
+        reader.readAsDataURL(file) 
+      } else {
+        // Si aucun fichier n'est sélectionné, réinitialiser
+        setImageFile(null)
+        setImagePreview(null)
       }
     }
 
@@ -160,8 +181,8 @@ const AddRecipe = () => {
       return false
     }
     
-    // Vérifier l'image : soit un fichier sélectionné, soit une image déjà présente (cas édition)
-    if (!imageFile && !formData.image.trim()) {
+    // Vérifier l'image : soit un fichier sélectionné, soit un aperçu, soit une image déjà présente (cas édition)
+    if (!imageFile && !imagePreview && !formData.image.trim()) {
       toast.error('L\'image est requise')
       return false
     }
@@ -384,7 +405,7 @@ const AddRecipe = () => {
               </div>
 
               {/* Afficher l'aperçu de l'image si une image est sélectionnée */}
-              {imagePreview && (
+              {imagePreview && imagePreview.trim() !== '' && (
                 <div className="image-preview-container">
                   <div className="image-preview-wrapper">
                     <img src={imagePreview} alt="Aperçu" className="image-preview" />
