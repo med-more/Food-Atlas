@@ -70,9 +70,9 @@ const Contact = () => {
             // Service ID: https://dashboard.emailjs.com/admin/services
             // Template ID: https://dashboard.emailjs.com/admin/templates
             // Public Key: https://dashboard.emailjs.com/admin/account
-            const SERVICE_ID = 'service_vmjq4b8';
-            const TEMPLATE_ID = 'template_aqiu9qj';
-            const PUBLIC_KEY = 'IziOHLbUUFV3GL1y3';
+            const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+            const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+            const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
             const templateParams = {
                 from_name: formData.nom,
