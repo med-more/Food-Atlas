@@ -55,6 +55,7 @@ a {
   color: inherit;
 }
 
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -85,6 +86,7 @@ a {
   animation: slideIn 0.4s ease-out;
 }
 
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
